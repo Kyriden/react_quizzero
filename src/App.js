@@ -1,25 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react'
+import Titre from './titre';
+import BasDePage from './Composants/BasDePage';
+import MaQuestion from './Composants/Controleur';
+import Categorie from './Composants/Categorie';
+import ConteneurQuestionReponses from './Composants/ConteneurBoutonQuestion';
+import { HandleLangChange } from './Composants/Categorie';
+import { render } from '@testing-library/react';
+import { BrowserRouter as Router, Route} from  "react-router-dom"
+import Fichiertest from './Composants/fichiertest';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      maCategorie: ""
+    };
+  }
+
+  categorieChoisie(cat) {
+    this.setState({
+      maCategorie: cat
+    });
+  }
+  
+  render() {
+    return (      
+      <div className="App">
+
+        
+          <main>
+            
+              <a href="Commencer">Commencer</a>
+              
+          </main>
+        <Categorie categorieChoisie={this.categorieChoisie.bind(this)}/>
+        <p>{this.state.maCategorie}</p>
+        <ConteneurQuestionReponses categorieChoisie={this.state.maCategorie} />
+        <Fichiertest />
+      </div>
+      
+    );
+  }
 }
 
-export default App;
+export default App
