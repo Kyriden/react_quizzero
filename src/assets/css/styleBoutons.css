@@ -58,11 +58,18 @@ button:hover {
 
 @media screen and (max-width: 480px) {
   #boutons {
-    max-width: 300px;
+    max-width: 400px;
     font-size: 18px;
   }
 }
 
-/* Tablette Landscape : 1024
+@media screen and (min-width: 1900px) {
+  #boutons {
+    max-width: 720px;
+  }
+}
+
+/* Giga écran : 1900
+Tablette Landscape : 1024
 Tablette : 768
 Mobile : 480 */
